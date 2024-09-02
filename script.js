@@ -49,5 +49,46 @@ function createAsciiArt(img) {
         }
     }
 
+    // Display ASCII art
     document.getElementById('ascii-art').textContent = asciiArt;
+
+    // Show the download button
+    document.getElementById('download').style.display = 'inline-block';
+    
+    // Set up download functionality
+    document.getElementById('download').onclick = function() {
+        const imageURL = textToImage(asciiArt);
+        downloadImage(imageURL);
+    };
+}
+
+function textToImage(asciiArt) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Estimate canvas size based on ASCII art
+    const lines = asciiArt.split('\n');
+    const lineHeight = 12; // Adjust based on font size
+    const maxLineLength = Math.max(...lines.map(line => line.length));
+    canvas.width = maxLineLength * 10; // Adjust font size
+    canvas.height = lines.length * lineHeight;
+
+    ctx.font = '10px monospace'; // Adjust font size as needed
+    ctx.fillStyle = '#FFFFFF'; // Adjust text color as needed
+
+    // Draw ASCII art
+    lines.forEach((line, index) => {
+        ctx.fillText(line, 0, (index + 1) * lineHeight);
+    });
+
+    return canvas.toDataURL('image/png');
+}
+
+function downloadImage(dataURL) {
+    const a = document.createElement('a');
+    a.href = dataURL;
+    a.download = 'ascii-art.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
