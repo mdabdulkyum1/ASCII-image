@@ -52,8 +52,8 @@ input[type="file"] {
     line-height: 1.5; /* Increased line height for better readability */
     margin-bottom: 20px;
     word-break: break-word;
-    background: #111;
-    color: #fff;
+    background: #c5c5c5;
+    color: #00f7ff;
     padding: 10px;
     border-radius: 8px;
     overflow-x: auto; /* Handle horizontal overflow */
@@ -61,7 +61,6 @@ input[type="file"] {
     box-sizing: border-box; /* Include padding in width calculation */
     display: block; /* Ensure it takes full width */
 }
-
 /* Download Button Styling */
 .download-btn {
     background: #007bff;

@@ -18,8 +18,9 @@ document.getElementById('upload').addEventListener('change', function (event) {
 function createAsciiArt(img) {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-
-    const desiredWidth = 100; 
+    
+    const displayWidth = window.innerWidth;
+    const desiredWidth = 250; 
     const aspectRatio = img.height / img.width;
     const width = desiredWidth;
     const height = Math.floor(desiredWidth * aspectRatio);
@@ -74,7 +75,7 @@ function textToImage(asciiArt) {
     canvas.height = lines.length * lineHeight;
 
     ctx.font = '10px monospace'; // Adjust font size as needed
-    ctx.fillStyle = '#FFFFFF'; // Adjust text color as needed
+    ctx.fillStyle = '#f72'; // Adjust text color as needed
 
     // Draw ASCII art
     lines.forEach((line, index) => {
